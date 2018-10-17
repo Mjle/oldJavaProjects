@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>Servlet Project</display-name>
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/views/index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!-- Servlet mapping -->
+	<servlet>
+		<description>Login Servlet for Users</description>
+		<display-name>LoginServlet</display-name>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.fdmgroup.servletproject.controller.Login</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>Logout</display-name>
+		<servlet-name>Logout</servlet-name>
+		<servlet-class>com.fdmgroup.servletproject.controller.Logout</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/Logout</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>Register System for Users </description>
+		<display-name>RegisterServlet</display-name>
+		<servlet-name>Register</servlet-name>
+		<servlet-class>com.fdmgroup.servletproject.controller.Register</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/Register</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>EditProfile</display-name>
+		<servlet-name>EditProfile</servlet-name>
+		<servlet-class>com.fdmgroup.servletproject.controller.EditProfile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditProfile</servlet-name>
+		<url-pattern>/EditProfile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<display-name>FindUser</display-name>
+		<servlet-name>FindUser</servlet-name>
+		<servlet-class>com.fdmgroup.servletproject.controller.FindUser</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FindUser</servlet-name>
+		<url-pattern>/FindUser</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<display-name>ListUsers</display-name>
+		<servlet-name>ListUsers</servlet-name>
+		<servlet-class>com.fdmgroup.servletproject.controller.ListUsers</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListUsers</servlet-name>
+		<url-pattern>/ListUsers</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<display-name>RemoveUser</display-name>
+		<servlet-name>RemoveUser</servlet-name>
+		<servlet-class>com.fdmgroup.servletproject.controller.RemoveUser</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemoveUser</servlet-name>
+		<url-pattern>/RemoveUser</url-pattern>
+	</servlet-mapping>
+	
+	<!-- JSP mapping -->
+	<servlet>
+		<servlet-name>LoginPage</servlet-name>
+		<jsp-file>/WEB-INF/views/login.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginPage</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RegisterPage</servlet-name>
+		<jsp-file>/WEB-INF/views/register.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegisterPage</servlet-name>
+		<url-pattern>/registerpage</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SuccessPage</servlet-name>
+		<jsp-file>/WEB-INF/views/success.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SuccessPage</servlet-name>
+		<url-pattern>/success</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>UserInfoPage</servlet-name>
+		<jsp-file>/WEB-INF/views/userinfo.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserInfoPage</servlet-name>
+		<url-pattern>/userinfo</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ListUsersPage</servlet-name>
+		<jsp-file>/WEB-INF/views/listusers.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListUsersPage</servlet-name>
+		<url-pattern>/listuserspage</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>EditProfilePage</servlet-name>
+		<jsp-file>/WEB-INF/views/editprofile.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditProfilePage</servlet-name>
+		<url-pattern>/editprofile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ProfilePage</servlet-name>
+		<jsp-file>/WEB-INF/views/profile.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProfilePage</servlet-name>
+		<url-pattern>/profile</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Filters -->
+	<filter>
+		<display-name>UsernameFilter</display-name>
+		<filter-name>UsernameFilter</filter-name>
+		<filter-class>com.fdmgroup.servletproject.controller.UsernameFilter</filter-class>
+	</filter>
+	<filter>
+		<display-name>PasswordFilter</display-name>
+		<filter-name>PasswordFilter</filter-name>
+		<filter-class>com.fdmgroup.servletproject.controller.PasswordFilter</filter-class>
+	</filter>
+	<filter>
+		<display-name>RegisterFilter</display-name>
+		<filter-name>RegisterFilter</filter-name>
+		<filter-class>com.fdmgroup.servletproject.controller.RegisterFilter</filter-class>
+	</filter>
+	
+	<!-- Filter Mapping -->
+	<filter-mapping>
+		<filter-name>UsernameFilter</filter-name>
+		<url-pattern>/Login</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>PasswordFilter</filter-name>
+		<url-pattern>/Login</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>RegisterFilter</filter-name>
+		<url-pattern>/Register</url-pattern>
+	</filter-mapping>
+
+	<!-- Listener -->
+	<listener>
+		<listener-class>com.fdmgroup.servletproject.controller.ServerListener</listener-class>
+	</listener>
+
+	<!-- Error Pages -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.RuntimeException</exception-type>
+		<location>/WEB-INF/views/exceptions.jsp</location>
+	</error-page>
+</web-app>

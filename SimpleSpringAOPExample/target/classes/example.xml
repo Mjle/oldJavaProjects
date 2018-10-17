@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<bean id="conLogger" class="com.fdmgroup.demos.aop.ConsoleLogger" />
+	<bean id="factory" class="com.fdmgroup.demos.aop.UserFactory" />
+	<bean id="user" class="com.fdmgroup.demos.aop.User" />
+
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<aop:config>
+
+		<aop:pointcut id="everything" expression="execution(* *(..))" />
+
+		<aop:pointcut id="anyWork" expression="execution(* work(..))" />
+
+		<aop:pointcut id="returningUserInUser"
+			expression="execution(com.fdmgroup.demos.aop.User com.fdmgroup.demos.aop.User.*(..))" />
+
+		<aop:pointcut id="returningUserInAopPackage"
+			expression="execution(com.fdmgroup.demos.aop.User com.fdmgroup.demos.aop.*.*(..))" />
+		
+
+		<aop:aspect id="loggingAspect" ref="conLogger">
+
+			<aop:before pointcut-ref="everything" method="logEntry" />
+			
+			<aop:after pointcut-ref="anyWork" method="logExitWork" />
+
+			<aop:after-returning pointcut-ref="returningUserInAopPackage"
+				returning="returnedObject" method="logReturnUser" />
+				
+			<aop:after-returning pointcut-ref="returningUserInUser"
+				returning="returnedObject" method="logReturnUser" />
+
+		</aop:aspect>
+
+	</aop:config>
+
+</beans>
